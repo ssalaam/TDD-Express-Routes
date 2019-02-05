@@ -4,10 +4,6 @@ Basic tutorial on unit testing express routes
 ## Create a basic express App
 This tutorial assumes you have a basic knowledge of Javascript, Node and Express. 
 
-Run the following commands 
-```bash
-mkdir "TDD_SAMPLE_APP"
-cd TDD_SAMPLE_APP
 ```
 Create two files under the TDD_SAMPLE_APP app folder you just created:  
 *package.json*
@@ -99,7 +95,12 @@ npm i
  Now create a dir called *tests* and under that dir create file called *app.tests.js*
  
  ![alt text](https://res.cloudinary.com/veedbeta/image/upload/v1549398138/image_3_tiiwpb.png)
-
+ 
+ 
+  Run the following command
+```bash
+npm test
+```
     
     
     
