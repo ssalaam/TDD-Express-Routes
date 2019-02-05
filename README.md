@@ -13,6 +13,33 @@ Create two files under the TDD_SAMPLE_APP app folder you just created:
 *package.json*
 *app.js*
 
+  add the following code to *package.json*
+  ```json
+  {
+    "name": "tdd_sample_app",
+    "version": "1.0.0",
+    "scripts": {
+        "start": "node app.js",
+        "test": "mocha ./tests --recursive"
+    },
+    "author": "your name",
+    "contributors": [],
+    "dependencies": {
+        "body-parser": "^1.4.3",
+        "chai": "^4.2.0",
+        "express": "^4.16.0",
+        "mocha": "^5.2.0",
+        "morgan": "^1.1.1",
+        "npm": "^5.7.1",
+        "request": "^2.79.0"
+    },
+    "devDependencies": {
+        "supertest": "^3.4.2"
+    }
+}
+
+  ```
+    
   add the following code to *app.js*
   
   ```js
