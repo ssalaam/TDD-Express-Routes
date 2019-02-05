@@ -94,7 +94,12 @@ npm i
   ### Chai 
   Chai will handle our assertions which can be written in several ways depending on comfort (we'll cover a few)
   
-   Back to business. 
+ Back to business. 
+ 
+ Now create a dir called *tests* and under that dir create file called *app.tests.js*
+ 
+ ![alt text](https://res.cloudinary.com/veedbeta/image/upload/v1549398138/image_3_tiiwpb.png)
+
     
     
     
