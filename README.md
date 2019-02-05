@@ -40,18 +40,6 @@ Create two files under the TDD_SAMPLE_APP app folder you just created:
 
   ```
   
-  Let's pause for a second. We've added a few key dependecies that we will use for testing.
-  *chai, mocha,* and *supertest*
-  
-  ### Supertest
-  We will use supertest to test our routes
-  
-  ### Mocha 
-  Mocha will run our tests 
-  
-  ### Chai 
-  Chai will handle our assertions 
-    
   add the following code to *app.js*
   
   ```js
@@ -87,5 +75,28 @@ app.get('/', function(req, res) { //route all other  requests here
 module.exports = app;
 
   ```
+  
+  Run the following command
+```bash
+npm i
+```
 
+  
+  Let's pause for a second. We've added a few key dependecies to our package.json that we will use for testing.
+  *chai, mocha,* and *supertest*
+  
+  ### Supertest
+  We will use supertest to test our routes
+  
+  ### Mocha 
+  Mocha will run our tests 
+  
+  ### Chai 
+  Chai will handle our assertions which can be written in several ways depending on comfort (we'll cover a few)
+  
+   Back to business. 
+    
+    
+    
+  
 
