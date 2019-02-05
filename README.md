@@ -6,7 +6,8 @@ This tutorial assumes you have a basic knowledge of Javascript, Node and Express
 
 Run the following commands 
 ```bash
-mkdir NodeApp
-cd NodeApp
-npm init
+mkdir "TDD_SAMPLE_APP"
+cd TDD_SAMPLE_APP
 ```
+
+N
