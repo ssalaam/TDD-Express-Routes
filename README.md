@@ -131,7 +131,26 @@ describe('Unit testing /math/add ROUTE', function() {
 });
 
 `````
+ Run the following command
+```bash
+npm test
+```
+We should see that 1 test has failed 
 
+```` bash
+0 passing (924ms)
+  1 failing
+
+  1) Unit testing /math/add ROUTE
+       should return 422 status if numbers are missing from query params:
+
+      AssertionError: expected 404 to equal 422
+      + expected - actual
+
+      -404
+      +422
+
+````
 
 
     
