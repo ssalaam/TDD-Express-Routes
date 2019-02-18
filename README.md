@@ -100,6 +100,10 @@ npm i
 ```bash
 npm test
 ```
+Since we have not written any tests we should see
+````bash
+0 passing
+````
     
     
     
