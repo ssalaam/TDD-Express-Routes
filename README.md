@@ -151,6 +151,11 @@ We should see that 1 test has failed
       +422
 
 ````
+Lets break down our first test. In the first few lines we import the neccessary modules. Pretty straight foward. Describe.() then allows us to group and label our tests. In this case we are grouping all of our tests related to the route *'math/add'*.
+
+Our first test calls our *'math/add'* route and asserts that the response status code should be 422 because we did not pass the correct query parameters 
+
+When this test is actually run it fails because the route does not yet exist therefore express returns a 404 response code instead
 
 
     
