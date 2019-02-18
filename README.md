@@ -182,21 +182,8 @@ npm test
 
 We should now see that our test has passed.
 
-Let's created another unit test. Below our first unit test add the following code:
-
-````js
- it('should return 200 status and some sort of numerical answer if a valid array of numbers is passed', function() {
-      return request(app)
-        .get('/math/add')
-        .query({ numbers: [2, 3, 4, 5]})
-        .then(function(response){
-            assert.equal(response.status, 200);
-            assert.property(response.body, 'answer');
-            assert.typeOf(response.body.answer, 'number');
-        });
-    });
-````
-*app.tests.js* should now look like this
+Let's created another unit test. 
+Update *app.tests.js*:
 
 ````js
 const expect = require('chai').expect;
@@ -231,6 +218,7 @@ describe('Unit testing /math/add ROUTE', function() {
 
 });
 ````
+Our 2nd unit test is calling our *math/add* route this time with the correct parameters. We then assert that the since valid query params were passed with the request, the response body should contain and answer and it should be of type *number*. If we run this test we already know it should fail. Let's then update our route to pass the 2nd test. 
 
 
     
