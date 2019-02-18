@@ -1,5 +1,5 @@
 # TDD-Express-Routes
-Basic tutorial on unit testing express routes
+Basic tutorial on testing driven development with express
 
 ## Create a basic express App
 This tutorial assumes you have a basic knowledge of Javascript, Node and Express. 
@@ -104,6 +104,36 @@ Since we have not written any tests we should see
 ````bash
 0 passing
 ````
+Let's write our first test:
+
+Add the following code to *app.tests.js*
+
+````javascript
+
+const expect = require('chai').expect;
+const assert = require('chai').assert;
+const should = require('chai').should;
+
+const request = require('supertest');
+
+const app = require('../app');
+
+describe('Unit testing /math/add ROUTE', function() {
+
+    it('should return 422 status if numbers are missing from query params', function() {
+      return request(app)
+        .get('/math/add')
+        .then(function(response){
+            assert.equal(response.status, 422);
+        });
+    });
+   
+});
+
+`````
+
+
+
     
     
     
