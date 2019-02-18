@@ -4,7 +4,6 @@ Basic tutorial on unit testing express routes
 ## Create a basic express App
 This tutorial assumes you have a basic knowledge of Javascript, Node and Express. 
 
-```
 Create two files under the TDD_SAMPLE_APP app folder you just created:  
 *package.json*
 *app.js*
