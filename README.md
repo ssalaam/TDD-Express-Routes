@@ -155,7 +155,9 @@ Lets break down our first test. In the first few lines we import the neccessary 
 
 Our first test calls our *'math/add'* route and asserts that the response status code should be 422 because we did not pass the correct query parameters 
 
-When this test is actually run it fails because the route does not yet exist therefore express returns a 404 response code instead
+When this test is actually run it fails because the route does not yet exist therefore express returns a 404 response code instead. 
+
+In Test Driven Development this is expected. We first write a unit test against code that does not yet exist; expecting this test to fail. We then write just enough code to pass that unit test.  
 
 
     
