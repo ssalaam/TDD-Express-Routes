@@ -355,7 +355,22 @@ Let's update our route to pass this test:
   });
 ````
 
-
+Let's add one more test:
+````js
+    it('should add a list of numbers correctly and return the answer', function() {
+        return request(app)
+            .get('/math/add')
+            .query({ numbers: [2,2,2]})
+            .then(function(response){
+                assert.equal(response.status, 200);
+                assert.property(response.body, 'answer');
+                assert.typeOf(response.body.answer, 'number');
+                assert.equal(response.body.answer, 6);
+            });
+    });
+ ````
+   
+   
 
 
     
