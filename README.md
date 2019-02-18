@@ -297,11 +297,65 @@ app.get('/math/add', function(req, res) { //route all other  requests here
   });
 ````
 
-Our route now loops through each element in the numbers array and check to ensure that it is a number otherwise it send a 500 response code. 
+Our route now loops through each element in the numbers array and checks to ensure that it is a number otherwise it send a 500 response code. 
+
+Let's add another test:
+
+````js
+ it('should return 200 status and some sort of numerical answer if a valid array of numbers is passed', function() {
+      return request(app)
+        .get('/math/add')
+        .query({ numbers: [2, 3, 4, 5]})
+        .then(function(response){
+            assert.equal(response.status, 200);
+            assert.property(response.body, 'answer');
+            assert.typeOf(response.body.answer, 'number');
+        });
+    });
+````
 
 
+This test calls our route with the correct parameters. We then assert that the since valid query params were passed with the request, the response body should contain an answer and it should be of type *number*. 
 
-Our 2nd unit test is calling our *math/add* route this time with the correct parameters. We then assert that the since valid query params were passed with the request, the response body should contain an answer and it should be of type *number*. If we run this test we already know it should fail. Let's then update our route to pass the 2nd test. 
+Let's update our route to pass this test:
+
+````js
+ app.get('/math/add', function(req, res) { //route all other  requests here
+
+      if("numbers" in req.query){
+
+          if(req.query.numbers instanceof Array){
+
+              for(var i = 0; i < req.query.numbers.length;i++){
+
+                  if(isNaN(req.query.numbers[i])){
+
+                      res.status(500);
+                      res.send("Non numerical value found");
+                      return;
+
+                  }
+
+              }
+
+              res.status(200);
+              res.send({answer:0});
+
+
+          }else{
+              res.status(422);
+              res.send("Invalid parameters");
+          }
+
+      }else{
+          res.status(422);
+          res.send("Missing parameters");
+      }
+
+  });
+````
+
+
 
 
     
