@@ -204,21 +204,54 @@ describe('Unit testing /math/add ROUTE', function() {
         });
     });
 
-     it('should return 200 status and some sort of numerical answer if a valid array of numbers is passed', function() {
-      return request(app)
-        .get('/math/add')
-        .query({ numbers: [2, 3, 4, 5]})
-        .then(function(response){
-            assert.equal(response.status, 200);
-            assert.property(response.body, 'answer');
-            assert.typeOf(response.body.answer, 'number');
-        });
+    it('should return 422 status if numbers param is not an array', function() {
+        return request(app)
+            .get('/math/add')
+            .query({ numbers: 5})
+            .then(function(response){
+                assert.equal(response.status, 422);
+            });
     });
 
-
 });
+
+
+
 ````
-Our 2nd unit test is calling our *math/add* route this time with the correct parameters. We then assert that the since valid query params were passed with the request, the response body should contain and answer and it should be of type *number*. If we run this test we already know it should fail. Let's then update our route to pass the 2nd test. 
+
+Our 2nd unit test is calling our route this time with the *numbers* param present in the request but as a singular number. We want this param to be an array of numbers.
+
+We know this test will fail. Let's update our route to pass this test.
+
+````js
+  app.get('/math/add', function(req, res) { //route all other  requests here
+
+      if("numbers" in req.query){
+
+          if(req.query.numbers instanceof Array){
+              
+          }else{
+              res.status(422);
+              res.send("Invalid parameters");
+          }
+
+      }else{
+          res.status(422);
+          res.send("Missing parameters");
+      }
+
+  });
+````
+
+If we run the following command both our tests should now pass!
+```bash
+npm test
+```
+
+
+
+
+Our 2nd unit test is calling our *math/add* route this time with the correct parameters. We then assert that the since valid query params were passed with the request, the response body should contain an answer and it should be of type *number*. If we run this test we already know it should fail. Let's then update our route to pass the 2nd test. 
 
 
     
