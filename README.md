@@ -248,6 +248,56 @@ If we run the following command both our tests should now pass!
 npm test
 ```
 
+Let's another unit test:
+
+````js
+it('should return 500 status if numbers array contains non numeric value', function() {
+        return request(app)
+            .get('/math/add')
+            .query({ numbers: [2, 3, 4, "5"]})
+            .then(function(response){
+                assert.equal(response.status, 500);
+            });
+    });
+````
+
+In our 3rd test we are calling our route with the correct numbers param as an array but this time with one array element as a string. Our route should respond with a 500 error code.
+
+Let's update our route to pass this test:
+
+```js
+app.get('/math/add', function(req, res) { //route all other  requests here
+
+      if("numbers" in req.query){
+
+          if(req.query.numbers instanceof Array){
+
+              for(var i = 0; i < req.query.numbers.length;i++){
+
+                  if(isNaN(req.query.numbers[i])){
+
+                      res.status(500);
+                      res.send("Non numerical value found");
+                      return;
+
+                  }
+
+              }
+
+          }else{
+              res.status(422);
+              res.send("Invalid parameters");
+          }
+
+      }else{
+          res.status(422);
+          res.send("Missing parameters");
+      }
+
+  });
+````
+
+Our route now loops through each element in the numbers array and check to ensure that it is a number otherwise it send a 500 response code. 
 
 
 
