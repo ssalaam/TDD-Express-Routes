@@ -157,7 +157,31 @@ Our first test calls our *'math/add'* route and asserts that the response status
 
 When this test is actually run it fails because the route does not yet exist therefore express returns a 404 response code instead. 
 
-In Test Driven Development this is expected. We first write a unit test against code that does not yet exist; expecting this test to fail. We then write just enough code to pass that unit test.  
+In Test Driven Development this is expected. We first write a unit test against code that does not yet exist; expecting this test to fail. We then write just enough code to pass that unit test.
+
+Add the following code to existing code in *app.js*
+
+````javascript
+  app.get('/math/add', function(req, res) { //route all other  requests here
+
+      if("numbers" in req.query){
+
+      }else{
+          res.status(422);
+          res.send("Missing parameters");
+      }
+
+  });
+  ````
+  We have now created the route we are testing. We then check to see if *numbers* is present in the query paramaters of the request and otherwise respond with a 422 status code. This should be enough to pass our first test.  
+
+`````
+ Run the following command
+```bash
+npm test
+```
+
+We should now see that our test has passed. 
 
 
     
