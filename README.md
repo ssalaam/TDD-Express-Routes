@@ -175,13 +175,62 @@ Add the following code to existing code in *app.js*
   ````
   We have now created the route we are testing. We then check to see if *numbers* is present in the query paramaters of the request and otherwise respond with a 422 status code. This should be enough to pass our first test.  
 
-`````
  Run the following command
 ```bash
 npm test
 ```
 
-We should now see that our test has passed. 
+We should now see that our test has passed.
+
+Let's created another unit test. Below our first unit test add the following code:
+
+````js
+ it('should return 200 status and some sort of numerical answer if a valid array of numbers is passed', function() {
+      return request(app)
+        .get('/math/add')
+        .query({ numbers: [2, 3, 4, 5]})
+        .then(function(response){
+            assert.equal(response.status, 200);
+            assert.property(response.body, 'answer');
+            assert.typeOf(response.body.answer, 'number');
+        });
+    });
+````
+*app.tests.js* should now look like this
+
+````js
+const expect = require('chai').expect;
+const assert = require('chai').assert;
+const should = require('chai').should;
+
+const request = require('supertest');
+
+const app = require('../app');
+
+describe('Unit testing /math/add ROUTE', function() {
+
+    it('should return 422 status if numbers are missing from query params', function() {
+      return request(app)
+        .get('/math/add')
+        .then(function(response){
+            assert.equal(response.status, 422);
+        });
+    });
+
+     it('should return 200 status and some sort of numerical answer if a valid array of numbers is passed', function() {
+      return request(app)
+        .get('/math/add')
+        .query({ numbers: [2, 3, 4, 5]})
+        .then(function(response){
+            assert.equal(response.status, 200);
+            assert.property(response.body, 'answer');
+            assert.typeOf(response.body.answer, 'number');
+        });
+    });
+
+
+});
+````
 
 
     
