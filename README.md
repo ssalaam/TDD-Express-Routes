@@ -1,5 +1,5 @@
 # TDD-Express-Routes
-On going tutorial I am writting on test driven development with express
+On going tutorial I am writting on test driven development with express (will add more when I have time).
 
 ## Create a basic express App
 This tutorial assumes you have a basic knowledge of Javascript, Node and Express. 
